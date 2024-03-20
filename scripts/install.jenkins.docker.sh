@@ -9,6 +9,7 @@ JENKINS_AGENT_CONFIG_DIR=~/docker-config/jenkins-agent;
 mkdir -p $JENKINS_CONFIG_DIR;
 cd $JENKINS_CONFIG_DIR;
 
+
 echo "$(docker container stop jenkins)";
 echo "$(docker container rm jenkins)";
 #sleep 3
@@ -111,6 +112,8 @@ RUN CHROMEDRIVER_VERSION=$(curl https://googlechromelabs.github.io/chrome-for-te
     rm -rf ~/chromedriver-linux64
 
 RUN apt-get install -y  ffmpeg
+RUN apt-get install -y nfs-common
+RUN mkdir -p /home/jenkins/videos && chmod -R 777 /home/jenkins/videos
 EOF
 
 # build custom container
@@ -122,15 +125,20 @@ docker run -d \
  -p 4444:22 \
  --restart=on-failure \
  -e "JENKINS_AGENT_SSH_PUBKEY=$PUB_KEY" \
+ --mount source=nfs-volume,target=/home/jenkins/videos \
  myjenkinsagent:lts;
 
 # display initial admin key
 echo "$(docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword)"
 
 hostname -I;
-echo 'Go to http:// <ip address>:8080/';
+echo 'Go to http://<ip address>:8080/';
 echo 'Choose - Install recommended plugins';
 echo 'Create admin user';
 echo 'Choose default instance address';
 echo 'Start using Jenkins';
 echo ''
+
+echo "$(docker container prune)"
+echo "$(docker image prune)"
+echo "$(docker volume prune)"
