@@ -1,0 +1,14 @@
+docker volume create --driver local \
+  --opt type=nfs \
+  --opt o=addr=<hostname>,rw \
+  --opt device=:/volume1/<share name> \
+  nfs-volume
+
+docker volume ls
+
+docker volume inspect nfs-volume
+
+---
+# within the docker image run:
+
+sudo apt-get install nfs-common -y
