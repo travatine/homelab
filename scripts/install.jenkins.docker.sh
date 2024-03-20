@@ -71,3 +71,4 @@ echo 'Choose - Install recommended plugins';
 echo 'Create admin user';
 echo 'Choose default instance address';
 echo 'Start using Jenkins';
+echo ''
