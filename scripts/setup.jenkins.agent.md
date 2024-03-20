@@ -27,10 +27,13 @@ ssh-keygen -f ~/docker-config/jenkins/jenkins_agent_key
 PUB_KEY="$(cat ~/docker-config/jenkins/jenkins_agent_key.pub)";
 
 # Create an agent
-docker run -d --rm --name=agent1 -p 4444:22 \
+docker run -d \
+ --name=agent1 \
+ -p 4444:22 \
  --restart=on-failure \
--e "JENKINS_AGENT_SSH_PUBKEY=$PUB_KEY" \
-jenkins/ssh-agent:latest;
+ -e "JENKINS_AGENT_SSH_PUBKEY=$PUB_KEY" \
+ jenkins/ssh-agent:latest;
+
 docker ps;
 ```
 
