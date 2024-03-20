@@ -72,16 +72,6 @@ docker run \
   --volume  ./jenkins-docker-certs:/certs/client:ro \
   myjenkins:lts
 
-# display initial admin key
-docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
-
-hostname -I;
-echo 'Go to http:// <ip address>:8080/';
-echo 'Choose - Install recommended plugins';
-echo 'Create admin user';
-echo 'Choose default instance address';
-echo 'Start using Jenkins';
-echo ''
 
 
 mkdir -p $JENKINS_AGENT_CONFIG_DIR;
@@ -119,6 +109,8 @@ RUN CHROMEDRIVER_VERSION=$(curl https://googlechromelabs.github.io/chrome-for-te
     rm ~/chromedriver-linux64.zip && \
     mv -f ~/chromedriver-linux64/chromedriver /usr/bin/chromedriver && \
     rm -rf ~/chromedriver-linux64
+
+RUN apt-get install -y  ffmpeg
 EOF
 
 # build custom container
@@ -131,3 +123,14 @@ docker run -d \
  --restart=on-failure \
  -e "JENKINS_AGENT_SSH_PUBKEY=$PUB_KEY" \
  myjenkinsagent:lts;
+
+# display initial admin key
+echo "$(docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword)"
+
+hostname -I;
+echo 'Go to http:// <ip address>:8080/';
+echo 'Choose - Install recommended plugins';
+echo 'Create admin user';
+echo 'Choose default instance address';
+echo 'Start using Jenkins';
+echo ''
