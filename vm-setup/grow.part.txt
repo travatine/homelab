@@ -1,0 +1,7 @@
+# After expanding a guest VDI in XCP-NG, reboot then run:
+# the following to grow partition & then expand filesystem
+
+lsblk
+sudo growpart /dev/xvda 1
+sudo resize2fs /dev/xvda1
+df -h
