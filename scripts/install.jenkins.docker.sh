@@ -8,6 +8,9 @@ JENKINS_CONFIG_DIR=~/docker-config/jenkins;
 mkdir -p $JENKINS_CONFIG_DIR;
 cd $JENKINS_CONFIG_DIR;
 
+echo "$(docker container stop jenkins-docker)";
+echo "$(docker network rm jenkins)";
+
 docker network create jenkins
 
 docker run \
