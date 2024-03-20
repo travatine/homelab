@@ -72,6 +72,18 @@ docker run \
   --volume  ./jenkins-docker-certs:/certs/client:ro \
   myjenkins:lts
 
+# display initial admin key
+docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
+hostname -I;
+echo 'Go to http:// <ip address>:8080/';
+echo 'Choose - Install recommended plugins';
+echo 'Create admin user';
+echo 'Choose default instance address';
+echo 'Start using Jenkins';
+echo ''
+
+
 mkdir -p $JENKINS_AGENT_CONFIG_DIR;
 cd $JENKINS_AGENT_CONFIG_DIR;
 
