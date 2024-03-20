@@ -61,3 +61,6 @@ docker run \
   --volume  ./jenkins-data:/var/jenkins_home \
   --volume  ./jenkins-docker-certs:/certs/client:ro \
   myjenkins:lts
+
+# display initial admin key
+docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
