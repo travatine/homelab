@@ -79,13 +79,13 @@ Click Build Now
 
 ## Disable the built in node executors
 
-http://192.168.7.124:8080/
-Click Manage Jenkins
-Click Nodes
-Click Built In Node
-Click Configure
-Number of executors 0
-Click Save
+Go to Jenkins e.g. http://192.168.7.124:8080/
+- Click Manage Jenkins
+- Click Nodes
+- Click Built In Node
+- Click Configure
+- Number of executors 0
+- Click Save
 
 Wait 5 seconds, click the build that ran
 
