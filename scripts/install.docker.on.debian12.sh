@@ -1,8 +1,9 @@
 #!/bin/bash
+set -eux
 
 # 2024-03-20 Travis - The following will install docker on debian 12.
 
-# taken from https://docs.docker.com/engine/install/debian/
+# based on https://docs.docker.com/engine/install/debian/
 
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; 
 do 
