@@ -48,7 +48,7 @@ docker ps;
 
 Specify the node attributes
 - Remote root directory: /home/jenkins/agent
-- Usage: Only build jobs with label expressions matching this node
+- Usage: Use this node as much as possible
 - Launch method: Launch agents via SSH
 - Host: jenkins02.ozlan.org
 - Credentials: jenkins
