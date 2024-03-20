@@ -65,6 +65,9 @@ docker run \
 # display initial admin key
 docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 
-hostname -I
-echo 'Go to http:// <ip address>:8080/'
-echo 'Choose - Install recommended plugins'
+hostname -I;
+echo 'Go to http:// <ip address>:8080/';
+echo 'Choose - Install recommended plugins';
+echo 'Create admin user';
+echo 'Choose default instance address';
+echo 'Start using Jenkins';
