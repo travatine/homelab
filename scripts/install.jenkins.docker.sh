@@ -9,7 +9,9 @@ mkdir -p $JENKINS_CONFIG_DIR;
 cd $JENKINS_CONFIG_DIR;
 
 echo "$(docker container stop jenkins)";
+echo "$(docker container rm jenkins)";
 echo "$(docker container stop jenkins-docker)";
+echo "$(docker container rm jenkins-docker)";
 echo "$(docker network rm jenkins)";
 
 docker network create jenkins
