@@ -64,3 +64,7 @@ docker run \
 
 # display initial admin key
 docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
+hostname -I
+echo 'Go to http:// <ip address>:8080/'
+echo 'Choose - Install recommended plugins'
