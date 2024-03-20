@@ -42,7 +42,7 @@ RUN jenkins-plugin-cli --plugins "docker-workflow"
 EOF
 
 # build custom container
-docker build -t myjenkins:lts
+docker build -t myjenkins:lts .
 
 docker run \
   --name jenkins \
