@@ -1,0 +1,26 @@
+
+This is over a year old, but as it is the thread Google points too but has no answer, here is the answer I got from Synology support:
+
+https://kb.synology.com/en-id/DSM/tutorial/How_to_login_to_DSM_with_root_permission_via_SSH_Telnet
+
+TLDR?:
+
+- Enable SSH on your Synology
+
+- SSH in with admin account
+
+- type "sudo -i" and hit enter, you may be prompted for your password again
+
+- for 6.2 type "stop nmbd"
+
+- for 7.0 type "
+
+systemctl stop pkg-synosamba-nmbd (this stops the service)
+
+then type
+
+systemctl disable pkg-synosamba-nmbd (this prevents the service from starting after a restart)
+
+"
+
+The note mentions that this will work until after the SMB service package is updated which then defaults back to having the service enabled.
